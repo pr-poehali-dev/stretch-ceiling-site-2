@@ -99,93 +99,81 @@ const Index = () => {
     {
       name: "Анна Ковалёва",
       rating: 5,
-      text: "Спасибо за красивый глянцевый потолок в спальне! Комната визуально стала больше и светлее. Цены приятно удивили.",
+      text: "Прекрасное соотношение цены и качества. Глянцевый потолок смотрится дорого и элегантно. Спасибо за работу!",
       date: "22 ноября 2024"
     },
     {
-      name: "Дмитрий Волков",
+      name: "Дмитрий Иванов",
       rating: 5,
-      text: "Многоуровневый потолок с подсветкой - это что-то! Мастера знают свое дело. Гарантию дали на 15 лет, очень надежно.",
-      date: "8 декабря 2024"
+      text: "Заказывали многоуровневый потолок с подсветкой. Сделали быстро, качественно, с гарантией. Очень довольны результатом!",
+      date: "1 декабря 2024"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      {/* WhatsApp Float Button */}
+    <div className="min-h-screen bg-white">
       <button
         onClick={handleWhatsApp}
-        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl hover:scale-110 transition-all duration-300 animate-fade-in"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all"
         aria-label="Написать в WhatsApp"
       >
         <Icon name="MessageCircle" size={28} />
       </button>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
-        
-        <div className="container mx-auto text-center relative z-10 animate-fade-in">
-          <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30 rounded-full">
-            <span className="text-orange-400 font-medium text-sm tracking-wider">ПРЕМИАЛЬНЫЕ НАТЯЖНЫЕ ПОТОЛКИ</span>
-          </div>
+      <section className="py-20 px-4">
+        <div className="container mx-auto text-center">
+          <p className="text-orange-500 font-medium text-sm uppercase tracking-wider mb-4">
+            Натяжные потолки в Артёме
+          </p>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Роскошные потолки
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 mt-2">
+            <span className="block text-orange-500 mt-2">
               для вашего дома
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-300 mb-4 max-w-3xl mx-auto leading-relaxed">
-            Европейское качество и безупречный сервис в Артёме
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Европейское качество и безупречный сервис
           </p>
-          
-          <div className="flex items-center justify-center gap-3 mb-12 text-slate-300">
-            <Icon name="MapPin" size={20} className="text-orange-400" />
-            <span className="text-lg">г. Артём, Приморский край</span>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               onClick={handleWhatsApp}
               size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-6 text-lg"
             >
               <Icon name="MessageCircle" size={24} className="mr-2" />
               Написать в WhatsApp
             </Button>
             
-            <a href={`tel:${phoneDisplay}`} className="flex items-center gap-3 text-white hover:text-orange-400 transition-colors">
-              <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full">
-                <Icon name="Phone" size={24} />
-              </div>
-              <span className="text-2xl font-semibold">{phoneDisplay}</span>
+            <a href={`tel:${phoneDisplay}`} className="flex items-center gap-3 text-gray-900 hover:text-orange-500 transition-colors">
+              <Icon name="Phone" size={24} />
+              <span className="text-xl font-semibold">{phoneDisplay}</span>
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16">
+          <div className="flex flex-wrap justify-center gap-6 max-w-3xl mx-auto">
             {[
               { icon: "CheckCircle2", text: "Бесплатный замер" },
               { icon: "Zap", text: "Установка за 1 день" },
               { icon: "Award", text: "Гарантия 15 лет" }
             ].map((item, i) => (
-              <div key={i} className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all hover:scale-105">
-                <Icon name={item.icon} className="text-orange-400" size={24} />
-                <span className="text-white font-medium">{item.text}</span>
+              <div key={i} className="flex items-center gap-2">
+                <Icon name={item.icon} className="text-orange-500" size={20} />
+                <span className="text-gray-700">{item.text}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 px-4 bg-slate-800/50">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Почему выбирают нас
           </h2>
-          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
             Более 500 довольных клиентов в Артёме и Приморском крае
           </p>
           
@@ -193,26 +181,25 @@ const Index = () => {
             {features.map((feature, index) => (
               <Card 
                 key={index} 
-                className="p-8 bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 group"
+                className="p-8 bg-white border-gray-200 hover:shadow-lg transition-shadow"
               >
-                <div className="bg-gradient-to-br from-orange-500 to-amber-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Icon name={feature.icon} className="text-white" size={32} />
+                <div className="bg-orange-500 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+                  <Icon name={feature.icon} className="text-white" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Виды потолков
           </h2>
-          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
             Широкий выбор фактур и цветов для любого интерьера
           </p>
           
@@ -220,19 +207,18 @@ const Index = () => {
             {gallery.map((item, index) => (
               <Card 
                 key={index}
-                className="group relative overflow-hidden bg-slate-800 border-slate-700 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer"
+                className="overflow-hidden bg-white border-gray-200 hover:shadow-lg transition-shadow"
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-slate-300 text-sm">{item.desc}</p>
-                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
                 </div>
               </Card>
             ))}
@@ -240,21 +226,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Calculator Section */}
-      <section className="py-24 px-4 bg-slate-800/50">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Калькулятор стоимости
           </h2>
-          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
             Рассчитайте предварительную стоимость натяжного потолка
           </p>
 
-          <Card className="max-w-3xl mx-auto p-8 bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
+          <Card className="max-w-3xl mx-auto p-8 bg-white">
             <div className="space-y-8">
               <div>
-                <Label htmlFor="area" className="text-white text-lg mb-4 block">
-                  Площадь помещения: <span className="text-orange-400 font-bold">{calcData.area} м²</span>
+                <Label htmlFor="area" className="text-gray-900 text-lg mb-4 block">
+                  Площадь помещения: <span className="text-orange-500 font-bold">{calcData.area} м²</span>
                 </Label>
                 <Slider
                   id="area"
@@ -268,11 +253,11 @@ const Index = () => {
               </div>
 
               <div>
-                <Label htmlFor="type" className="text-white text-lg mb-4 block">
+                <Label htmlFor="type" className="text-gray-900 text-lg mb-4 block">
                   Тип потолка
                 </Label>
                 <Select value={calcData.type} onValueChange={(value) => setCalcData({...calcData, type: value})}>
-                  <SelectTrigger id="type" className="w-full bg-slate-800 border-slate-700 text-white text-lg p-6">
+                  <SelectTrigger id="type" className="w-full text-lg p-6">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -284,11 +269,11 @@ const Index = () => {
               </div>
 
               <div>
-                <Label htmlFor="levels" className="text-white text-lg mb-4 block">
+                <Label htmlFor="levels" className="text-gray-900 text-lg mb-4 block">
                   Уровни
                 </Label>
                 <Select value={calcData.levels} onValueChange={(value) => setCalcData({...calcData, levels: value})}>
-                  <SelectTrigger id="levels" className="w-full bg-slate-800 border-slate-700 text-white text-lg p-6">
+                  <SelectTrigger id="levels" className="w-full text-lg p-6">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -298,21 +283,21 @@ const Index = () => {
                 </Select>
               </div>
 
-              <div className="pt-6 border-t border-slate-700">
+              <div className="pt-6 border-t border-gray-200">
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-slate-400 text-lg">Предварительная стоимость:</span>
-                  <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">
+                  <span className="text-gray-600 text-lg">Предварительная стоимость:</span>
+                  <span className="text-4xl font-bold text-orange-500">
                     {calculatePrice().toLocaleString('ru-RU')} ₽
                   </span>
                 </div>
                 <Button 
                   onClick={handleWhatsApp}
-                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-6 text-lg border-0"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-6 text-lg"
                 >
                   <Icon name="MessageCircle" className="mr-2" />
                   Получить точный расчёт в WhatsApp
                 </Button>
-                <p className="text-slate-500 text-sm text-center mt-4">
+                <p className="text-gray-500 text-sm text-center mt-4">
                   * Точная стоимость рассчитывается после бесплатного замера
                 </p>
               </div>
@@ -321,13 +306,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
             Отзывы клиентов
           </h2>
-          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
             Более 500 довольных клиентов в Артёме доверяют нам
           </p>
 
@@ -335,42 +319,41 @@ const Index = () => {
             {reviews.map((review, index) => (
               <Card 
                 key={index}
-                className="p-8 bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:scale-105"
+                className="p-8 bg-white border-gray-200"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <Avatar className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500">
+                  <Avatar className="w-12 h-12 bg-orange-500">
                     <AvatarFallback className="text-white font-bold">
                       {review.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
-                    <h3 className="text-white font-bold text-lg">{review.name}</h3>
+                    <h3 className="text-gray-900 font-bold text-lg">{review.name}</h3>
                     <div className="flex gap-1 mt-1">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Icon key={i} name="Star" className="text-orange-400 fill-orange-400" size={16} />
+                        <Icon key={i} name="Star" className="text-orange-500 fill-orange-500" size={16} />
                       ))}
                     </div>
                   </div>
-                  <span className="text-slate-500 text-sm">{review.date}</span>
+                  <span className="text-gray-500 text-sm">{review.date}</span>
                 </div>
-                <p className="text-slate-300 leading-relaxed">{review.text}</p>
+                <p className="text-gray-700">{review.text}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 px-4 bg-gradient-to-r from-orange-500 to-amber-500">
+      <section className="py-20 px-4 bg-orange-500">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Бесплатный замер и расчёт
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
             Оставьте заявку, и наш специалист свяжется с вами в течение 15 минут
           </p>
           
-          <Card className="max-w-2xl mx-auto p-8 bg-white/95 backdrop-blur-sm border-0 shadow-2xl">
+          <Card className="max-w-2xl mx-auto p-8 bg-white">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
@@ -378,7 +361,7 @@ const Index = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required
-                  className="text-lg p-6 border-slate-300 focus:border-orange-500"
+                  className="text-lg p-6"
                 />
               </div>
               
@@ -389,7 +372,7 @@ const Index = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   required
-                  className="text-lg p-6 border-slate-300 focus:border-orange-500"
+                  className="text-lg p-6"
                 />
               </div>
               
@@ -398,51 +381,40 @@ const Index = () => {
                   placeholder="Комментарий к заявке (необязательно)"
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="min-h-32 text-lg p-6 border-slate-300 focus:border-orange-500"
+                  className="min-h-32 text-lg p-6"
                 />
               </div>
               
               <Button 
                 type="submit"
-                size="lg"
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-6 text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-6 text-lg"
               >
-                <Icon name="Send" className="mr-2" />
-                Отправить заявку в WhatsApp
+                Отправить заявку
               </Button>
-              
-              <p className="text-sm text-slate-600">
-                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
-              </p>
             </form>
           </Card>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-950 py-12 px-4 border-t border-slate-800">
+      <footer className="py-12 px-4 bg-gray-900 text-white">
         <div className="container mx-auto text-center">
-          <div className="flex flex-col items-center gap-4 mb-6">
-            <a href={`tel:${phoneDisplay}`} className="text-2xl font-bold text-white hover:text-orange-400 transition-colors">
-              {phoneDisplay}
-            </a>
-            <Button 
-              onClick={handleWhatsApp}
-              variant="outline"
-              className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white"
-            >
-              <Icon name="MessageCircle" className="mr-2" />
-              Написать в WhatsApp
-            </Button>
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold mb-4">Натяжные потолки в Артёме</h3>
+            <div className="flex items-center justify-center gap-2 text-gray-400 mb-2">
+              <Icon name="MapPin" size={20} className="text-orange-500" />
+              <span>г. Артём, Приморский край</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-gray-400">
+              <Icon name="Phone" size={20} className="text-orange-500" />
+              <a href={`tel:${phoneDisplay}`} className="hover:text-orange-500 transition-colors">
+                {phoneDisplay}
+              </a>
+            </div>
           </div>
           
-          <div className="text-slate-500 space-y-2">
-            <p className="flex items-center justify-center gap-2">
-              <Icon name="MapPin" size={16} />
-              г. Артём, Приморский край
-            </p>
-            <p className="text-sm">
-              © 2024 Натяжные потолки в Артёме. Все права защищены.
+          <div className="border-t border-gray-800 pt-6">
+            <p className="text-gray-500 text-sm">
+              © 2024 Натяжные потолки. Все права защищены.
             </p>
           </div>
         </div>
