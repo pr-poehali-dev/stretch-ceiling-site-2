@@ -4,6 +4,10 @@ import Icon from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +15,19 @@ const Index = () => {
     phone: "",
     message: ""
   });
+
+  const [calcData, setCalcData] = useState({
+    area: 20,
+    type: "glossy",
+    levels: "single"
+  });
+
+  const calculatePrice = () => {
+    const basePrice = calcData.area * 450;
+    const typeMultiplier = calcData.type === "glossy" ? 1.2 : calcData.type === "satin" ? 1.1 : 1;
+    const levelsMultiplier = calcData.levels === "multi" ? 1.5 : 1;
+    return Math.round(basePrice * typeMultiplier * levelsMultiplier);
+  };
 
   const whatsappNumber = "79146666764";
   const phoneDisplay = "+7 (914) 666-67-64";
@@ -49,10 +66,48 @@ const Index = () => {
   ];
 
   const gallery = [
-    { title: "Глянцевые потолки", desc: "Визуально увеличивают пространство" },
-    { title: "Матовые потолки", desc: "Элегантная классика для любого интерьера" },
-    { title: "Сатиновые потолки", desc: "Изысканный перламутровый блеск" },
-    { title: "Многоуровневые", desc: "Уникальные дизайнерские решения" }
+    { 
+      title: "Глянцевые потолки", 
+      desc: "Визуально увеличивают пространство",
+      image: "https://cdn.poehali.dev/projects/39caeb15-ed88-4972-9dbb-cb4fea160d46/files/d45ed70f-2540-49d4-9740-04793c9b8f71.jpg"
+    },
+    { 
+      title: "Матовые потолки", 
+      desc: "Элегантная классика для любого интерьера",
+      image: "https://cdn.poehali.dev/projects/39caeb15-ed88-4972-9dbb-cb4fea160d46/files/fa40b0a7-e6e2-415f-9dd6-292bdac7d0d0.jpg"
+    },
+    { 
+      title: "Многоуровневые", 
+      desc: "Уникальные дизайнерские решения",
+      image: "https://cdn.poehali.dev/projects/39caeb15-ed88-4972-9dbb-cb4fea160d46/files/17900d66-5060-4f5e-ba89-fbf62c489a2b.jpg"
+    }
+  ];
+
+  const reviews = [
+    {
+      name: "Елена Петрова",
+      rating: 5,
+      text: "Отличная работа! Установили потолок в гостиной за 4 часа. Качество на высоте, все аккуратно и чисто. Рекомендую!",
+      date: "15 октября 2024"
+    },
+    {
+      name: "Михаил Сергеев",
+      rating: 5,
+      text: "Делали потолки во всей квартире. Профессиональная команда, приехали вовремя, работали быстро. Результат превзошел ожидания!",
+      date: "3 ноября 2024"
+    },
+    {
+      name: "Анна Ковалёва",
+      rating: 5,
+      text: "Спасибо за красивый глянцевый потолок в спальне! Комната визуально стала больше и светлее. Цены приятно удивили.",
+      date: "22 ноября 2024"
+    },
+    {
+      name: "Дмитрий Волков",
+      rating: 5,
+      text: "Многоуровневый потолок с подсветкой - это что-то! Мастера знают свое дело. Гарантию дали на 15 лет, очень надежно.",
+      date: "8 декабря 2024"
+    }
   ];
 
   return (
@@ -161,20 +216,144 @@ const Index = () => {
             Широкий выбор фактур и цветов для любого интерьера
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {gallery.map((item, index) => (
               <Card 
                 key={index}
                 className="group relative overflow-hidden bg-slate-800 border-slate-700 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer"
               >
-                <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <Icon name="Sparkles" size={64} className="text-slate-600 group-hover:text-orange-400 transition-colors duration-500 group-hover:scale-125" />
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <p className="text-slate-300 text-sm">{item.desc}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-slate-400">{item.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator Section */}
+      <section className="py-24 px-4 bg-slate-800/50">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+            Калькулятор стоимости
+          </h2>
+          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+            Рассчитайте предварительную стоимость натяжного потолка
+          </p>
+
+          <Card className="max-w-3xl mx-auto p-8 bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
+            <div className="space-y-8">
+              <div>
+                <Label htmlFor="area" className="text-white text-lg mb-4 block">
+                  Площадь помещения: <span className="text-orange-400 font-bold">{calcData.area} м²</span>
+                </Label>
+                <Slider
+                  id="area"
+                  min={10}
+                  max={100}
+                  step={5}
+                  value={[calcData.area]}
+                  onValueChange={(value) => setCalcData({...calcData, area: value[0]})}
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="type" className="text-white text-lg mb-4 block">
+                  Тип потолка
+                </Label>
+                <Select value={calcData.type} onValueChange={(value) => setCalcData({...calcData, type: value})}>
+                  <SelectTrigger id="type" className="w-full bg-slate-800 border-slate-700 text-white text-lg p-6">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="matte">Матовый</SelectItem>
+                    <SelectItem value="satin">Сатиновый (+10%)</SelectItem>
+                    <SelectItem value="glossy">Глянцевый (+20%)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="levels" className="text-white text-lg mb-4 block">
+                  Уровни
+                </Label>
+                <Select value={calcData.levels} onValueChange={(value) => setCalcData({...calcData, levels: value})}>
+                  <SelectTrigger id="levels" className="w-full bg-slate-800 border-slate-700 text-white text-lg p-6">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="single">Одноуровневый</SelectItem>
+                    <SelectItem value="multi">Многоуровневый (+50%)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="pt-6 border-t border-slate-700">
+                <div className="flex justify-between items-center mb-6">
+                  <span className="text-slate-400 text-lg">Предварительная стоимость:</span>
+                  <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">
+                    {calculatePrice().toLocaleString('ru-RU')} ₽
+                  </span>
                 </div>
+                <Button 
+                  onClick={handleWhatsApp}
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-6 text-lg border-0"
+                >
+                  <Icon name="MessageCircle" className="mr-2" />
+                  Получить точный расчёт в WhatsApp
+                </Button>
+                <p className="text-slate-500 text-sm text-center mt-4">
+                  * Точная стоимость рассчитывается после бесплатного замера
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
+            Отзывы клиентов
+          </h2>
+          <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
+            Более 500 довольных клиентов в Артёме доверяют нам
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {reviews.map((review, index) => (
+              <Card 
+                key={index}
+                className="p-8 bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:scale-105"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <Avatar className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500">
+                    <AvatarFallback className="text-white font-bold">
+                      {review.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <h3 className="text-white font-bold text-lg">{review.name}</h3>
+                    <div className="flex gap-1 mt-1">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" className="text-orange-400 fill-orange-400" size={16} />
+                      ))}
+                    </div>
+                  </div>
+                  <span className="text-slate-500 text-sm">{review.date}</span>
+                </div>
+                <p className="text-slate-300 leading-relaxed">{review.text}</p>
               </Card>
             ))}
           </div>
